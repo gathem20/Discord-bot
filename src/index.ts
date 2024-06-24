@@ -1,8 +1,7 @@
 import { Client, GatewayIntentBits } from "discord.js";
-import Dotenv from "dotenv";
-import path from "path";
-
-Dotenv.config({ path: "../.env" });
+import * as Dotenv from "dotenv";
+Dotenv.config();
+const token = process.env.token;
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -16,9 +15,9 @@ client.on("ready", (e) => {
 });
 
 client.on("messageCreate", (message: any) => {
-  if (message.content === "bing") {
-    message.reply("bong");
+  if (message.content === "ping") {
+    message.reply("pong");
   }
 });
 
-client.login(process.env.token);
+client.login(token);
