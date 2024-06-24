@@ -16,8 +16,12 @@ client.on("ready", (e) => {
 
 client.on("messageCreate", (message: any) => {
   console.log(message.content);
-  if (message.content === "ping") {
+  const content = message.content;
+  const parts = content.split(" ");
+  if (content.startsWith("!bot-do ping")) {
     message.reply("pong");
+  } else if (parts[0] === "!bot-do") {
+    message.reply("i dont understand ?");
   }
 });
 
